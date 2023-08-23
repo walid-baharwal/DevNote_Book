@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import Loader from './loader'
+import noteContext from '../../context/Context'
 const Signup = () => {
+  const context = useContext(noteContext)
+  const { updateLoader, loader } = context;
   const [error, setError] = useState({ name: "", email: "", password: "" });
   const [SameEmailError, setSameEmailError] = useState("");
 
@@ -12,8 +15,8 @@ const Signup = () => {
     password: "",
   });
   const handleSignup = async (e) => {
+    updateLoader(true);
     e.preventDefault();
-    // console.log(credentials);
     let result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/createuser`, {
       method: "POST",
       headers: {
@@ -26,7 +29,7 @@ const Signup = () => {
       }),
     });
     result = await result.json();
-
+    updateLoader(false);
     if (result.success) {
       localStorage.setItem("token", result.authToken);
       navigate("/");
@@ -67,7 +70,7 @@ const Signup = () => {
       <section className="bg-gray-50">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div
-           
+
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
           >
             <img
@@ -165,7 +168,8 @@ const Signup = () => {
                   className="w-full hover:text-white hover:bg-BoxFocus-50 text-BoxFocus-50 border-2 border-BoxFocus-50  focus:outline-none  font-medium rounded-lg text-lg px-5 py-2.5 text-center "
                   onClick={handleSignup}
                 >
-                  Create an account
+                  {loader ? <Loader /> : 'Create an account'}
+              
                 </button>
                 <p className="text-sm font-light text-gray-500 ">
                   Already have an account?{" "}
