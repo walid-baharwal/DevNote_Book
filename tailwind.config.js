@@ -14,7 +14,8 @@ module.exports = {
     extend: {
       colors:{
         BoxFocus:{50:'#ffc107'},
-        BoxShadow:{50:'#ffc10770'}
+        BoxShadow:{50:'#ffc10770'},
+        BoxWhite:{50:'#ffffff'}
         // chatblack:{50:'#343541'},
         // box:{50:'#40414F'},
         // leftbody:{50:'#202123'},

@@ -34,7 +34,6 @@ const Notes = () => {
         {note.map((note) => (
             <NoteItem  note={note} key={note._id}/>
         ))}
-      {/* <NoteItem/> */}
     
     </div>
   </div>

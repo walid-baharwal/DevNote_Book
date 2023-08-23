@@ -1,18 +1,19 @@
 import React,{useContext,useState} from 'react'
 import noteContext from '../../context/Context'
+import Loader from './loader'
 const AddNote = () => {
   const context = useContext(noteContext)
-  const {addNote} = context;
+  const {addNote ,loader} = context;
 
   const [note,setNote] = useState({title:'',description:'',tag:''})
   const handleChange = (e) => {
     setNote({...note,[e.target.name]:e.target.value})
   }
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
 
       e.preventDefault()
       if (note.description) {
-        addNote(note)
+        await addNote(note)
         setNote({title:'',description:'',tag:''})
         
       }
@@ -47,7 +48,7 @@ const AddNote = () => {
         </div>
         <div className="p-2 w-full">
           <button className="flex mx-auto border-2 border-BoxFocus-50  py-2 px-8 focus:outline-none hover:bg-BoxFocus-50 hover:text-white rounded text-lg"
-            onClick={handleClick} >Add Note</button>
+            onClick={handleClick} >{loader ? <Loader/> :'Add Note'}</button>
         </div>
     
       </div>
