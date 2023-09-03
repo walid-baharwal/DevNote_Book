@@ -14,7 +14,7 @@ const Login = () => {
     updateLoader(true);
     e.preventDefault()
     // console.log(credentials);
-   let result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`, {
+   let result = await fetch(`${process.env.REACT_APP_HOST}api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
