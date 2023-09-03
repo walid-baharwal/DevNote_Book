@@ -17,7 +17,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     updateLoader(true);
     e.preventDefault();
-    let result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/createuser`, {
+    let result = await fetch(`${process.env.REACT_APP_HOST}api/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -24,7 +24,7 @@ const NoteState = (props) => {
 
 
     const getUser = async () => {
-        let result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/getuser`, {
+        let result = await fetch(`${process.env.REACT_APP_HOST}api/auth/getuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const NoteState = (props) => {
         setUser(result);
     }
     const getNotes = async () => {
-        let result = await fetch(`${process.env.REACT_APP_HOST}/api/notes/fetchallnotes`, {
+        let result = await fetch(`${process.env.REACT_APP_HOST}api/notes/fetchallnotes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const NoteState = (props) => {
 
     const addNote = async (nte) => {
         updateLoader(true);
-        let result = await fetch(`${process.env.REACT_APP_HOST}/api/notes/addnote`, {
+        let result = await fetch(`${process.env.REACT_APP_HOST}api/notes/addnote`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const NoteState = (props) => {
         const newNote = note.filter(not => not._id !== id)
         setNote(newNote)
 
-        let result = await fetch(`${process.env.REACT_APP_HOST}/api/notes/deletenote/${id}`, {
+        let result = await fetch(`${process.env.REACT_APP_HOST}api/notes/deletenote/${id}`, {
             method: 'Delete',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const NoteState = (props) => {
                 element.description = nte.description
             }
         }
-        let result = await fetch(`${process.env.REACT_APP_HOST}/api/notes/updatenote/${nte._id}`, {
+        let result = await fetch(`${process.env.REACT_APP_HOST}api/notes/updatenote/${nte._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
